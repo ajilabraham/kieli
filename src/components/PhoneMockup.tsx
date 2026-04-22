@@ -27,7 +27,7 @@ export const PhoneMockup = () => {
     >
       {/* Top App Bar inside Mockup */}
       <div className="flex items-center justify-between px-6 pt-10 pb-3 bg-surface/80 backdrop-blur-[20px] z-10 sticky top-0">
-        <div className="flex items-center justify-center w-9 h-9 rounded-full bg-card shadow-sm glass-border overflow-hidden p-1">
+        <div className="flex items-center justify-center w-12 h-12 rounded-full bg-card shadow-sm glass-border overflow-hidden p-1.5">
           <img src="/Logo.png" alt="Kieli" className="w-full h-full object-contain" />
         </div>
         
