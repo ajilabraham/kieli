@@ -1,7 +1,7 @@
 
 import { PhoneMockup } from './PhoneMockup';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles, Clock, MessageCircle, MonitorSmartphone, Briefcase, BookOpen } from 'lucide-react';
 import { ValueProposition } from './sections/ValueProposition';
 import { HowItWorks } from './sections/HowItWorks';
 import { FeaturesGrid } from './sections/FeaturesGrid';
@@ -88,27 +88,39 @@ export const LandingPage = () => {
              </motion.div>
              
              {/* Micro feature metrics */}
-             <div className="-mt-8 flex flex-wrap gap-x-10 gap-y-6 border-t border-brandText/10 pt-4 w-full max-w-xl">
-               <div className="space-y-1">
-                 <p className="text-2xl font-bold text-brandText tracking-tight">24/7</p>
+             <div className="mt-4 flex flex-wrap gap-x-10 gap-y-8 border-t border-brandText/10 pt-8 w-full max-w-xl">
+               <div className="space-y-1.5 flex flex-col items-start">
+                 <div className="flex items-center gap-2 text-brandText">
+                   <Clock className="w-5 h-5 text-primary/60" />
+                   <p className="text-2xl font-bold tracking-tight">24/7</p>
+                 </div>
                  <p className="text-[11px] font-bold uppercase tracking-[1.5px] text-brandText/50">Availability</p>
                </div>
-               <div className="space-y-1">
-                 <p className="text-2xl font-bold text-brandText tracking-tight">Native</p>
+               
+               <div className="space-y-1.5 flex flex-col items-start">
+                 <div className="flex items-center gap-2 text-brandText">
+                   <MessageCircle className="w-5 h-5 text-primary/60" />
+                   <p className="text-2xl font-bold tracking-tight">Native</p>
+                 </div>
                  <p className="text-[11px] font-bold uppercase tracking-[1.5px] text-brandText/50">Fluency</p>
                </div>
-               <div className="space-y-1">
-                 <p className="text-2xl font-bold text-brandText tracking-tight">Hybrid</p>
+               
+               <div className="space-y-1.5 flex flex-col items-start">
+                 <div className="flex items-center gap-2 text-brandText">
+                   <MonitorSmartphone className="w-5 h-5 text-primary/60" />
+                   <p className="text-2xl font-bold tracking-tight">Hybrid</p>
+                 </div>
                  <p className="text-[11px] font-bold uppercase tracking-[1.5px] text-brandText/50">Learning</p>
                </div>
-               <div className="space-y-1">
-                 <p className="text-2xl font-bold text-brandText tracking-tight">Career</p>
+               
+               <div className="space-y-1.5 flex flex-col items-start">
+                 <div className="flex items-center gap-2 text-brandText">
+                   <Briefcase className="w-5 h-5 text-primary/60" />
+                   <p className="text-2xl font-bold tracking-tight">Career</p>
+                 </div>
                  <p className="text-[11px] font-bold uppercase tracking-[1.5px] text-brandText/50">Focused</p>
                </div>
-               <div className="space-y-1">
-                 <p className="text-2xl font-bold text-brandText tracking-tight">Course</p>
-                 <p className="text-[11px] font-bold uppercase tracking-[1.5px] text-brandText/50">Materials</p>
-               </div>
+               
              </div>
           </motion.div>
 
