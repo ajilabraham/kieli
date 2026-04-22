@@ -2,10 +2,17 @@
 import { PhoneMockup } from './PhoneMockup';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { ValueProposition } from './sections/ValueProposition';
+import { HowItWorks } from './sections/HowItWorks';
+import { FeaturesGrid } from './sections/FeaturesGrid';
+import { LearningPath } from './sections/LearningPath';
+import { PlatformVision } from './sections/PlatformVision';
+import { SocialProofAndFAQ } from './sections/SocialProofAndFAQ';
+import { FinalCTA } from './sections/FinalCTA';
 
 export const LandingPage = () => {
   return (
-    <div className="min-h-screen bg-surface flex flex-col relative overflow-hidden">
+    <div className="min-h-screen bg-surface flex flex-col relative overflow-x-hidden">
        {/* Brand Header */}
        <div className="absolute top-8 left-6 lg:left-12 z-50 flex items-center gap-3">
          <div className="w-12 h-12 rounded-2xl bg-card shadow-soft glass-border flex items-center justify-center p-1.5 overflow-hidden">
@@ -98,7 +105,17 @@ export const LandingPage = () => {
             <PhoneMockup />
           </div>
 
-       </div>
+        </div>
+       
+       {/* Sub-sections */}
+       <ValueProposition />
+       <HowItWorks />
+       <FeaturesGrid />
+       <LearningPath />
+       <PlatformVision />
+       <SocialProofAndFAQ />
+       <FinalCTA />
+
     </div>
   );
 };
