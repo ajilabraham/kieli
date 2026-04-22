@@ -13,6 +13,45 @@ export const PhoneMockup = () => {
       script.async = true;
       document.body.appendChild(script);
     }
+
+    // Hide "Powered by" and "ElevenAgents" watermark inside Shadow DOM
+    const hideWatermark = () => {
+      const widget = document.querySelector('elevenlabs-convai');
+      if (widget && widget.shadowRoot) {
+        // Inject CSS to hide all anchor tags (the ElevenLabs link)
+        if (!widget.shadowRoot.querySelector('#hide-watermark-style')) {
+          const style = document.createElement('style');
+          style.id = 'hide-watermark-style';
+          style.innerHTML = `
+            a {
+              display: none !important;
+              opacity: 0 !important;
+              pointer-events: none !important;
+              visibility: hidden !important;
+            }
+          `;
+          widget.shadowRoot.appendChild(style);
+        }
+
+        // Also aggressively hide any text nodes containing the branding
+        const walker = document.createTreeWalker(widget.shadowRoot, NodeFilter.SHOW_TEXT);
+        let node;
+        while ((node = walker.nextNode())) {
+          if (node.nodeValue?.includes('Powered by') || node.nodeValue?.includes('ElevenAgents')) {
+            const parent = node.parentElement;
+            if (parent) {
+              parent.style.display = 'none';
+              parent.style.opacity = '0';
+              parent.style.visibility = 'hidden';
+              parent.style.pointerEvents = 'none';
+            }
+          }
+        }
+      }
+    };
+    
+    const interval = setInterval(hideWatermark, 500);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -52,7 +91,7 @@ export const PhoneMockup = () => {
         </div>
 
         {/* Tutor Card Showcase */}
-        <div className="bg-card rounded-[24px] p-4 shadow-soft glass-border space-y-4">
+        <div className="bg-card rounded-[24px] p-4 shadow-soft glass-border">
           <div className="flex items-center justify-between">
             <div>
               <p className="label-caps text-brandText/50 mb-1.5">Current AI Tutor</p>
@@ -61,11 +100,6 @@ export const PhoneMockup = () => {
             <div className="w-12 h-12 rounded-full bg-surface glass-border flex items-center justify-center shadow-sm">
               <span className="text-2xl">🧔🏽‍♂️</span>
             </div>
-          </div>
-          
-          <div className="flex gap-2">
-            <span className="px-3 py-1.5 bg-secondary rounded-full text-xs font-semibold text-brandText/70 tracking-wide glass-border">Strict Focus</span>
-            <span className="px-3 py-1.5 bg-secondary rounded-full text-xs font-semibold text-brandText/70 tracking-wide glass-border">Conversational</span>
           </div>
         </div>
 
@@ -76,13 +110,13 @@ export const PhoneMockup = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-surface/40 pointer-events-none" />
             
             <div className="absolute top-4 text-center w-full z-10 px-4">
-               <p className="text-xs font-semibold tracking-wide text-brandText/50 uppercase">Live Practice Session</p>
+               <p className="text-xs font-semibold tracking-wide text-black uppercase">Live Practice Session</p>
             </div>
             
              {/* The ElevenLabs Web Component - This needs space to render properly */}
              <div className="h-full w-full flex items-center justify-center scale-[0.85] pt-0">
                {/* @ts-ignore - Custom Element */}
-               <elevenlabs-convai agent-id="agent_8001kpap365sfter9vyz7ntkp0mk"></elevenlabs-convai>
+               <elevenlabs-convai agent-id="agent_8001kpap365sfter9vyz7ntkp0mk" disable-banner="true"></elevenlabs-convai>
              </div>
           </div>
         </div>
