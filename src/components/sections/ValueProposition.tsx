@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { ShieldCheck, MessageCircle, Briefcase, Quote } from 'lucide-react';
 
