@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ShieldCheck, MessageCircle, Briefcase, Quote } from 'lucide-react';
+import { ShieldCheck, MessageCircle, Briefcase, Quote, Play } from 'lucide-react';
 
 export const ValueProposition = () => {
   return (
@@ -13,21 +13,42 @@ export const ValueProposition = () => {
         
         {/* Section 1: Why Kieli Exists */}
         <div className="space-y-16">
-          <div className="max-w-3xl">
-            <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-brandText leading-tight mb-8">
-              Speaking a language is different from <span className="text-primary italic">studying</span> a language.
-            </h2>
-            <div className="space-y-6 text-lg lg:text-xl text-brandText/70 leading-relaxed font-medium">
-              <p>
-                Most language apps help you memorize words, complete grammar exercises, and tap through lessons. But when it's time to actually speak in a real situation, many learners freeze.
-              </p>
-              <p className="text-brandText font-semibold">
-                Kieli is built differently.
-              </p>
-              <p>
-                We help learners practice real spoken Finnish through immersive AI conversations, so they can build confidence before speaking with real people. No fear of judgment. No embarrassment over mistakes. Just practical, supportive speaking practice that helps learners communicate in everyday life.
-              </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+            <div className="max-w-xl">
+              <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-brandText leading-tight mb-8">
+                Speaking a language is different from <span className="text-primary italic">studying</span> a language.
+              </h2>
+              <div className="space-y-6 text-lg lg:text-xl text-brandText/70 leading-relaxed font-medium">
+                <p>
+                  Most language apps help you memorize words, complete grammar exercises, and tap through lessons. But when it's time to actually speak in a real situation, many learners freeze.
+                </p>
+                <p className="text-brandText font-semibold">
+                  Kieli is built differently.
+                </p>
+                <p>
+                  We help learners practice real spoken Finnish through immersive AI conversations, so they can build confidence before speaking with real people. No fear of judgment. No embarrassment over mistakes. Just practical, supportive speaking practice that helps learners communicate in everyday life.
+                </p>
+              </div>
             </div>
+
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="w-full aspect-square max-w-md mx-auto lg:ml-auto lg:mr-0 bg-card rounded-[40px] glass-border shadow-soft flex flex-col items-center justify-center gap-6 relative overflow-hidden group cursor-pointer"
+            >
+              <div className="absolute inset-0 bg-signature-gradient opacity-5 group-hover:opacity-10 transition-opacity duration-500" />
+              
+              <div className="w-24 h-24 rounded-full bg-surface glass-border shadow-soft flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform duration-500">
+                <Play className="w-8 h-8 text-primary ml-2 fill-primary/20" />
+              </div>
+              
+              <div className="text-center relative z-10 space-y-2">
+                <p className="text-sm font-bold tracking-widest text-primary uppercase">Watch Video</p>
+                <p className="text-brandText/50 font-medium">See how Kieli works</p>
+              </div>
+            </motion.div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

@@ -80,7 +80,7 @@ export const LandingPage = () => {
                 className="mt-2 flex items-center gap-3 py-3 px-6 bg-card rounded-full glass-border shadow-soft w-fit border border-primary/20 self-end"
              >
                 <p className="text-[13px] font-bold tracking-[0.1em] text-primary">
-                  TRY IT DIRECTLY HERE, TAP THE MIC
+                  TRY IT DIRECTLY HERE, TAP CALL 📞
                 </p>
                 <ArrowRight className="w-4 h-4 text-primary hidden lg:block" />
                 {/* Arrow points down on mobile where the mockup is stacked below */}
@@ -88,7 +88,7 @@ export const LandingPage = () => {
              </motion.div>
              
              {/* Micro feature metrics */}
-             <div className="mt-4 flex gap-12 border-t border-brandText/10 pt-8 w-full max-w-md">
+             <div className="-mt-8 flex flex-wrap gap-x-10 gap-y-6 border-t border-brandText/10 pt-4 w-full max-w-xl">
                <div className="space-y-1">
                  <p className="text-2xl font-bold text-brandText tracking-tight">24/7</p>
                  <p className="text-[11px] font-bold uppercase tracking-[1.5px] text-brandText/50">Availability</p>
@@ -96,6 +96,18 @@ export const LandingPage = () => {
                <div className="space-y-1">
                  <p className="text-2xl font-bold text-brandText tracking-tight">Native</p>
                  <p className="text-[11px] font-bold uppercase tracking-[1.5px] text-brandText/50">Fluency</p>
+               </div>
+               <div className="space-y-1">
+                 <p className="text-2xl font-bold text-brandText tracking-tight">Hybrid</p>
+                 <p className="text-[11px] font-bold uppercase tracking-[1.5px] text-brandText/50">Learning</p>
+               </div>
+               <div className="space-y-1">
+                 <p className="text-2xl font-bold text-brandText tracking-tight">Career</p>
+                 <p className="text-[11px] font-bold uppercase tracking-[1.5px] text-brandText/50">Focused</p>
+               </div>
+               <div className="space-y-1">
+                 <p className="text-2xl font-bold text-brandText tracking-tight">Course</p>
+                 <p className="text-[11px] font-bold uppercase tracking-[1.5px] text-brandText/50">Materials</p>
                </div>
              </div>
           </motion.div>

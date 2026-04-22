@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { ChevronDown, User } from 'lucide-react';
+import { ChevronDown, User, BookOpen, Users, Briefcase } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const PhoneMockup = () => {
@@ -59,11 +59,23 @@ export const PhoneMockup = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="relative w-[340px] h-[720px] bg-surface rounded-[48px] glass-border flex flex-col overflow-hidden mx-auto"
+      className="relative w-[356px] h-[736px] rounded-[56px] p-[10px] mx-auto bg-white/60 backdrop-blur-2xl border border-white"
       style={{
-        boxShadow: "0 25px 50px -12px rgba(57, 94, 159, 0.25), inset 0 0 0 8px #f0f4f7",
+        boxShadow: "0 40px 80px -20px rgba(57, 94, 159, 0.4), inset 0 1px 2px rgba(255,255,255,0.9)",
       }}
     >
+      {/* Hardware Buttons */}
+      <div className="absolute top-28 -left-[2px] w-[2px] h-8 bg-brandText/20 rounded-l-sm" />
+      <div className="absolute top-44 -left-[2px] w-[2px] h-14 bg-brandText/20 rounded-l-sm" />
+      <div className="absolute top-64 -left-[2px] w-[2px] h-14 bg-brandText/20 rounded-l-sm" />
+      <div className="absolute top-48 -right-[2px] w-[2px] h-16 bg-brandText/20 rounded-r-sm" />
+
+      {/* Inner Screen */}
+      <div className="relative w-full h-full bg-surface rounded-[46px] flex flex-col overflow-hidden border border-brandText/10"
+           style={{ boxShadow: "inset 0 0 20px rgba(0,0,0,0.02)" }}>
+        
+        {/* Subtle Earpiece */}
+        <div className="absolute top-5 left-1/2 -translate-x-1/2 w-16 h-1.5 bg-brandText/10 rounded-full z-50"></div>
       {/* Top App Bar inside Mockup */}
       <div className="flex items-center justify-between px-6 pt-10 pb-3 bg-surface/80 backdrop-blur-[20px] z-10 sticky top-0">
         <div className="flex items-center justify-center w-12 h-12 rounded-full bg-card shadow-sm glass-border overflow-hidden p-1.5">
@@ -94,8 +106,15 @@ export const PhoneMockup = () => {
         <div className="bg-card rounded-[24px] p-4 shadow-soft glass-border">
           <div className="flex items-center justify-between">
             <div>
-              <p className="label-caps text-brandText/50 mb-1.5">Current AI Tutor</p>
-              <h3 className="text-lg font-bold text-brandText">Krishna Regmi</h3>
+              <p className="label-caps text-brandText/50 mb-1.5 flex items-center justify-between">Current AI Tutor</p>
+              <div className="flex items-center gap-2">
+                <h3 className="text-lg font-bold text-brandText leading-none">Krishna Regmi</h3>
+                <div className="flex items-center gap-1.5 ml-1 opacity-70">
+                  <BookOpen className="w-3.5 h-3.5 text-primary" />
+                  <Users className="w-3.5 h-3.5 text-primary" />
+                  <Briefcase className="w-3.5 h-3.5 text-primary" />
+                </div>
+              </div>
             </div>
             <div className="w-12 h-12 rounded-full bg-surface glass-border flex items-center justify-center shadow-sm">
               <span className="text-2xl">🧔🏽‍♂️</span>
@@ -122,8 +141,9 @@ export const PhoneMockup = () => {
         </div>
       </div>
       
-      {/* Home Indicator visual element */}
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[120px] h-[5px] bg-brandText/20 rounded-full"></div>
+        {/* Home Indicator visual element */}
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[120px] h-[5px] bg-brandText/20 rounded-full"></div>
+      </div>
     </motion.div>
   );
 };
