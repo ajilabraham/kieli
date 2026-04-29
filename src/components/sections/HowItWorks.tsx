@@ -1,8 +1,9 @@
 
 import { motion } from 'framer-motion';
-import { Mic, Headphones, BookOpen, PenTool, Sparkles } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 export const HowItWorks = () => {
+  /*
   const skills = [
     {
       icon: Mic,
@@ -25,13 +26,14 @@ export const HowItWorks = () => {
       desc: "Strengthen your learning through exercises, prompts, memory cards, and simple written recall activities."
     }
   ];
+  */
 
   return (
     <div className="w-full bg-surface py-24 lg:py-32 relative overflow-hidden">
       
       <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-32">
         
-        {/* Section 3: How It Works */}
+        {/* Section 3: How It Works - Hidden per request
         <div className="space-y-16">
           <div className="text-center max-w-3xl mx-auto space-y-6">
             <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-brandText leading-tight">
@@ -66,6 +68,7 @@ export const HowItWorks = () => {
             ))}
           </div>
         </div>
+        */}
 
         {/* Section 4: The Kieli Difference */}
         <motion.div 

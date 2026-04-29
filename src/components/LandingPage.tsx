@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { PhoneMockup } from './PhoneMockup';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Sparkles, Clock, MessageCircle, MonitorSmartphone, Briefcase } from 'lucide-react';
+import { TrainingLayers } from './sections/TrainingLayers';
 import { ValueProposition } from './sections/ValueProposition';
 import { HowItWorks } from './sections/HowItWorks';
 import { FeaturesGrid } from './sections/FeaturesGrid';
@@ -158,6 +159,7 @@ export const LandingPage = () => {
         </div>
        
        {/* Sub-sections */}
+       <TrainingLayers />
        <ValueProposition />
        <HowItWorks />
        <FeaturesGrid />
