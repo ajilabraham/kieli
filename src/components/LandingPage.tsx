@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { PhoneMockup } from './PhoneMockup';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Sparkles, Clock, MessageCircle, MonitorSmartphone, Briefcase, BookOpen } from 'lucide-react';
+import { ArrowRight, Sparkles, Clock, MessageCircle, MonitorSmartphone, Briefcase } from 'lucide-react';
 import { ValueProposition } from './sections/ValueProposition';
 import { HowItWorks } from './sections/HowItWorks';
 import { FeaturesGrid } from './sections/FeaturesGrid';
