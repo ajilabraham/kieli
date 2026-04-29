@@ -108,7 +108,7 @@ export const PhoneMockup = () => {
             <div>
               <p className="label-caps text-brandText/50 mb-1.5 flex items-center justify-between">Current AI Tutor</p>
               <div className="flex items-center gap-2">
-                <h3 className="text-lg font-bold text-brandText leading-none">Mikko AI</h3>
+                <h3 className="text-lg font-bold text-brandText leading-none">Kieli AI</h3>
                 <div className="flex items-center gap-1.5 ml-1 opacity-70">
                   <BookOpen className="w-3.5 h-3.5 text-primary" />
                   <Users className="w-3.5 h-3.5 text-primary" />

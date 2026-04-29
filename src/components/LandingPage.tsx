@@ -1,6 +1,7 @@
 
+import { useState, useEffect } from 'react';
 import { PhoneMockup } from './PhoneMockup';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Sparkles, Clock, MessageCircle, MonitorSmartphone, Briefcase, BookOpen } from 'lucide-react';
 import { ValueProposition } from './sections/ValueProposition';
 import { HowItWorks } from './sections/HowItWorks';
@@ -11,6 +12,16 @@ import { SocialProofAndFAQ } from './sections/SocialProofAndFAQ';
 import { FinalCTA } from './sections/FinalCTA';
 
 export const LandingPage = () => {
+  const languages = ["Finnish", "German", "Swedish", "Spanish", "French"];
+  const [langIndex, setLangIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLangIndex((prev) => (prev + 1) % languages.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="min-h-screen bg-surface flex flex-col relative overflow-x-hidden">
        {/* Brand Header */}
@@ -43,7 +54,22 @@ export const LandingPage = () => {
 
              <div className="space-y-6">
                 <h1 className="text-5xl lg:text-7xl font-semibold tracking-tight text-brandText leading-tight">
-                  Master Finnish <br/> 
+                  Master{' '}
+                  <span className="inline-grid overflow-hidden">
+                    <AnimatePresence>
+                      <motion.span
+                        key={languages[langIndex]}
+                        initial={{ y: "100%", opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: "-100%", opacity: 0 }}
+                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                        style={{ gridArea: "1 / 1" }}
+                      >
+                        {languages[langIndex]}
+                      </motion.span>
+                    </AnimatePresence>
+                  </span>
+                  <br/> 
                   <span className="text-primary italic">conversationally.</span>
                 </h1>
                 <p className="text-lg lg:text-xl text-brandText/70 leading-relaxed max-w-lg font-medium">
