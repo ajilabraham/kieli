@@ -97,7 +97,7 @@ export const FeaturesGrid = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-6">
             <h2 className="text-4xl font-bold tracking-tight text-brandText leading-tight">
-              Make mistakes privately. Speak confidently publicly.
+              Make mistakes carefreely. Speak confidently publicly.
             </h2>
             <div className="space-y-4 text-lg text-brandText/70 leading-relaxed font-medium">
               <p>

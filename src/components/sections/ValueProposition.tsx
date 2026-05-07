@@ -26,7 +26,7 @@ export const ValueProposition = () => {
                   Kieli is built differently.
                 </p>
                 <p>
-                  We help learners practice real spoken Finnish through immersive AI conversations, so they can build confidence before speaking with real people. No fear of judgment. No embarrassment over mistakes. Just practical, supportive speaking practice that helps learners communicate in everyday life.
+                  We help learners master spoken Finnish through immersive AI conversations designed for growth. Here, you don’t make mistakes, you create breakthroughs. Build your confidence in a space where judgment doesn't exist, turning every slip-up into a step toward fluency. Gain the practical experience you need to speak fearlessly in everyday life.
                 </p>
               </div>
             </div>
@@ -56,7 +56,7 @@ export const ValueProposition = () => {
               {
                 icon: ShieldCheck,
                 title: "Speak without fear",
-                desc: "Practice with AI before speaking in real-world situations. Make mistakes privately."
+                desc: "Practice with AI before speaking in real-world situations. Make mistakes carefreely and turn every slip-up into a breakthrough."
               },
               {
                 icon: MessageCircle,

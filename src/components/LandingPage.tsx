@@ -74,7 +74,7 @@ export const LandingPage = () => {
                   <span className="text-primary italic">conversationally.</span>
                 </h1>
                 <p className="text-lg lg:text-xl text-brandText/70 leading-relaxed max-w-lg font-medium">
-                  Kieli uses an advanced AI tutor to guide you through real-time immersive conversations. Zero stress, 100% natural interaction.
+                  Kieli uses an advanced AI tutor to guide you through real-time immersive conversations. Zero stress, 100% natural interaction, <span className="underline decoration-2 underline-offset-4 decoration-primary/50">focused on your job aspirations</span>.
                 </p>
              </div>
 
