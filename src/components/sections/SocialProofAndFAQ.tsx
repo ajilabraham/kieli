@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquareQuote, ChevronDown } from 'lucide-react';
 
-export const SocialProofAndFAQ = () => {
+export const SocialProofAndFAQ = ({ selectedLanguage }: { selectedLanguage: string }) => {
   const testimonials = [
     "I finally practiced speaking without feeling embarrassed.",
     "It felt like having a patient private tutor anytime.",
@@ -20,11 +20,11 @@ export const SocialProofAndFAQ = () => {
     },
     {
       q: "Can learners receive guidance in their own language?",
-      a: "Yes, that is part of the product vision — helping users learn Finnish through a language they already understand well."
+      a: `Yes, that is part of the product vision — helping users learn ${selectedLanguage} through a language they already understand well.`
     },
     {
       q: "Is this like Duolingo or ChatGPT Voice?",
-      a: "Kieli is being designed specifically around spoken Finnish learning, roleplay practice, confidence building, contextual feedback, and practical communication scenarios."
+      a: `Kieli is being designed specifically around spoken ${selectedLanguage} learning, roleplay practice, confidence building, contextual feedback, and practical communication scenarios.`
     },
     {
       q: "Can this support teachers and institutions later?",

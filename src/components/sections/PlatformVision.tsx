@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import { GraduationCap, Users, BookOpenCheck, Building2, Globe, TrendingUp } from 'lucide-react';
 
-export const PlatformVision = () => {
+export const PlatformVision = ({ selectedLanguage }: { selectedLanguage: string }) => {
   const ecosystem = [
     {
       icon: GraduationCap,
@@ -110,19 +110,19 @@ export const PlatformVision = () => {
           </div>
         </div>
 
-        {/* Section 13: Why Finnish, Why Now */}
+        {/* Section 13: Why {selectedLanguage}, Why Now */}
         <div className="max-w-4xl mx-auto bg-card rounded-[40px] p-10 md:p-16 glass-border shadow-soft text-center space-y-8 relative overflow-hidden">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary shadow-sm glass-border mx-auto relative z-10 mb-2">
             <Globe className="w-8 h-8 text-primary" />
           </div>
 
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-brandText leading-tight relative z-10">
-            For many learners, speaking Finnish unlocks everyday life
+            For many learners, speaking {selectedLanguage} unlocks everyday life
           </h2>
 
           <div className="space-y-4 text-lg md:text-xl text-brandText/70 font-medium leading-relaxed max-w-2xl mx-auto relative z-10">
             <p>
-              For immigrants, professionals, students, and workers, spoken Finnish can open doors to better integration, better communication, and better opportunities.
+              For immigrants, professionals, students, and workers, spoken {selectedLanguage} can open doors to better integration, better communication, and better opportunities.
             </p>
             <p>
               But many existing tools don't focus enough on practical speaking. Kieli aims to fill that gap with a confidence-first, conversation-first approach built for real communication.

@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, BriefcaseMedical, Code2, Coffee, Layers, UserCog } from 'lucide-react';
 
-export const LearningPath = () => {
+export const LearningPath = ({ selectedLanguage }: { selectedLanguage: string }) => {
   const progressions = [
     "A0", "A1", "A2", "Everyday Fluency", "Workplace Fluency"
   ];
@@ -56,7 +56,7 @@ export const LearningPath = () => {
             </div>
             <div className="mt-8 flex flex-wrap justify-center gap-6 text-brandText/60 font-medium text-sm">
               <span className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> Basic spoken interactions</span>
-              <span className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> Daily survival Finnish</span>
+              <span className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> Daily survival {selectedLanguage}</span>
               <span className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> Work-focused communication</span>
             </div>
           </div>
@@ -66,11 +66,11 @@ export const LearningPath = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-6 order-2 lg:order-1">
             <h2 className="text-4xl font-bold tracking-tight text-brandText leading-tight">
-              Finnish for real professions, not just generic lessons
+              {selectedLanguage} for real professions, not just generic lessons
             </h2>
             <div className="space-y-4 text-lg text-brandText/70 leading-relaxed font-medium">
               <p>
-                Language learners often need Finnish for a specific goal: work. Kieli can support profession-oriented learning paths so learners can practice the conversations that matter most in their field.
+                Language learners often need {selectedLanguage} for a specific goal: work. Kieli can support profession-oriented learning paths so learners can practice the conversations that matter most in their field.
               </p>
               <div className="pt-4 border-t border-brandText/10">
                 <p className="text-xl font-semibold text-primary italic">

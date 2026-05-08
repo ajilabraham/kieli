@@ -15,6 +15,7 @@ import { FinalCTA } from './sections/FinalCTA';
 export const LandingPage = () => {
   const languages = ["Finnish", "German", "Swedish", "Spanish", "French"];
   const [langIndex, setLangIndex] = useState(0);
+  const [selectedLanguage, setSelectedLanguage] = useState("Finnish");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -160,13 +161,13 @@ export const LandingPage = () => {
        
        {/* Sub-sections */}
        <TrainingLayers />
-       <ValueProposition />
-       <HowItWorks />
-       <FeaturesGrid />
-       <LearningPath />
-       <PlatformVision />
-       <SocialProofAndFAQ />
-       <FinalCTA />
+       <ValueProposition selectedLanguage={selectedLanguage} setSelectedLanguage={setSelectedLanguage} />
+       <HowItWorks selectedLanguage={selectedLanguage} />
+       <FeaturesGrid selectedLanguage={selectedLanguage} />
+       <LearningPath selectedLanguage={selectedLanguage} />
+       <PlatformVision selectedLanguage={selectedLanguage} />
+       <SocialProofAndFAQ selectedLanguage={selectedLanguage} />
+       <FinalCTA selectedLanguage={selectedLanguage} />
 
     </div>
   );

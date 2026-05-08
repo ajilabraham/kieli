@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import { Globe2, Heart, CheckCircle2 } from 'lucide-react';
 
-export const FeaturesGrid = () => {
+export const FeaturesGrid = ({ selectedLanguage }: { selectedLanguage: string }) => {
   const scenarios = [
     "Introducing yourself", "Asking for directions", "Workplace communication", 
     "Talking to colleagues", "Visiting a restaurant", "Handling customer service", 
@@ -37,7 +37,7 @@ export const FeaturesGrid = () => {
               Train for the conversations that <span className="text-primary italic">actually</span> matter
             </h2>
             <p className="text-lg text-brandText/70 leading-relaxed font-medium">
-              Kieli helps learners practice Finnish across practical, everyday situations — not just textbook examples. Each session is designed to simulate realistic spoken situations so learners can build confidence step by step.
+              Kieli helps learners practice {selectedLanguage} across practical, everyday situations — not just textbook examples. Each session is designed to simulate realistic spoken situations so learners can build confidence step by step.
             </p>
           </div>
 
@@ -80,14 +80,14 @@ export const FeaturesGrid = () => {
 
           <div className="order-1 lg:order-2 space-y-6">
             <h2 className="text-4xl font-bold tracking-tight text-brandText leading-tight">
-              Learn Finnish through the language you already know
+              Learn {selectedLanguage} through the language you already know
             </h2>
             <div className="space-y-4 text-lg text-brandText/70 leading-relaxed font-medium">
               <p>
                 Not every learner is comfortable receiving corrections in English. Kieli is designed to support learners through their mother tongue or strongest language, making explanations more accessible and learning more natural.
               </p>
               <p>
-                Whether a learner speaks English, Hindi, Malayalam, or another language, the goal is simple: make spoken Finnish easier to understand, practice, and retain.
+                Whether a learner speaks English, Hindi, Malayalam, or another language, the goal is simple: make spoken {selectedLanguage} easier to understand, practice, and retain.
               </p>
             </div>
           </div>

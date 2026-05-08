@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
-export const FinalCTA = () => {
+export const FinalCTA = ({ selectedLanguage }: { selectedLanguage: string }) => {
   return (
     <div className="w-full bg-surface py-24 lg:py-32 relative overflow-hidden">
       
@@ -26,7 +26,7 @@ export const FinalCTA = () => {
 
           <div className="space-y-6">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-brandText leading-tight">
-              Start speaking Finnish <br className="hidden md:block"/>
+              Start speaking {selectedLanguage} <br className="hidden md:block"/>
               with <span className="text-primary italic">confidence</span>.
             </h2>
             <p className="text-lg md:text-xl text-brandText/70 font-medium leading-relaxed max-w-2xl mx-auto">

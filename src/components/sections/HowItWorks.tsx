@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
 
-export const HowItWorks = () => {
+export const HowItWorks = ({ selectedLanguage }: { selectedLanguage: string }) => {
   /*
   const skills = [
     {
@@ -13,7 +13,7 @@ export const HowItWorks = () => {
     {
       icon: Headphones,
       title: "Listening Support",
-      desc: "Hear natural Finnish responses and improve your ability to understand real spoken language in context."
+      desc: `Hear natural ${selectedLanguage} responses and improve your ability to understand real spoken language in context.`
     },
     {
       icon: BookOpen,
@@ -95,12 +95,12 @@ export const HowItWorks = () => {
           </h2>
 
           <p className="text-lg md:text-xl text-brandText/70 font-medium leading-relaxed max-w-2xl mx-auto relative z-10">
-            Kieli is designed specifically for spoken Finnish acquisition, not just generic language tutoring. It combines structured pedagogical thinking with AI-driven conversation practice.
+            Kieli is designed specifically for spoken {selectedLanguage} acquisition, not just generic language tutoring. It combines structured pedagogical thinking with AI-driven conversation practice.
           </p>
 
           <div className="pt-4 border-t border-brandText/10 relative z-10">
             <p className="text-xl md:text-2xl font-semibold text-primary italic">
-              "Kieli helps learners move from knowing about Finnish to actually speaking Finnish."
+              "Kieli helps learners move from knowing about {selectedLanguage} to actually speaking {selectedLanguage}."
             </p>
           </div>
         </motion.div>

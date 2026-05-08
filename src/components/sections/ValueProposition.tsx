@@ -1,7 +1,12 @@
 import { motion } from 'framer-motion';
 import { ShieldCheck, MessageCircle, Briefcase, Quote, Play } from 'lucide-react';
 
-export const ValueProposition = () => {
+interface ValuePropositionProps {
+  selectedLanguage: string;
+  setSelectedLanguage: (lang: string) => void;
+}
+
+export const ValueProposition = ({ selectedLanguage, setSelectedLanguage }: ValuePropositionProps) => {
   return (
     <div className="w-full bg-secondary py-24 lg:py-32 relative overflow-hidden">
       
@@ -12,6 +17,21 @@ export const ValueProposition = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-32">
         
         {/* Section 1: Why Kieli Exists */}
+        <div className="flex flex-wrap gap-3 mb-12 justify-center lg:justify-start">
+          {["Finnish", "Spanish", "Swedish", "German", "French"].map((lang) => (
+            <button
+              key={lang}
+              onClick={() => setSelectedLanguage(lang)}
+              className={`px-6 py-3 rounded-full text-sm font-bold tracking-wide transition-all ${
+                selectedLanguage === lang
+                  ? "bg-primary text-white shadow-soft"
+                  : "bg-card text-brandText/60 hover:text-brandText hover:bg-surface border border-brandText/10"
+              }`}
+            >
+              Learn {lang}
+            </button>
+          ))}
+        </div>
         <div className="space-y-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
             <div className="max-w-xl">
@@ -26,7 +46,7 @@ export const ValueProposition = () => {
                   Kieli is built differently.
                 </p>
                 <p>
-                  We help learners master spoken Finnish through immersive AI conversations designed for growth. Here, you don’t make mistakes, you create breakthroughs. Build your confidence in a space where judgment doesn't exist, turning every slip-up into a step toward fluency. Gain the practical experience you need to speak fearlessly in everyday life.
+                  We help learners master spoken {selectedLanguage} through immersive AI conversations designed for growth. Here, you don’t make mistakes, you create breakthroughs. Build your confidence in a space where judgment doesn't exist, turning every slip-up into a step toward fluency. Gain the practical experience you need to speak fearlessly in everyday life.
                 </p>
               </div>
             </div>
@@ -66,7 +86,7 @@ export const ValueProposition = () => {
               {
                 icon: Briefcase,
                 title: "Train for real life",
-                desc: "Learn Finnish for work, daily errands, public services, and social situations."
+                desc: `Learn ${selectedLanguage} for work, daily errands, public services, and social situations.`
               }
             ].map((feature, i) => (
               <motion.div 
