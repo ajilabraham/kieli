@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { PhoneMockup } from './PhoneMockup';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Sparkles, Clock, MessageCircle, MonitorSmartphone, Briefcase } from 'lucide-react';
+import { ArrowRight, Sparkles, Clock, MessageCircle, MonitorSmartphone, Briefcase, CheckCircle2, Loader2 } from 'lucide-react';
 import { TrainingLayers } from './sections/TrainingLayers';
 import { ValueProposition } from './sections/ValueProposition';
 import { HowItWorks } from './sections/HowItWorks';
@@ -16,6 +16,44 @@ export const LandingPage = () => {
   const languages = ["Finnish", "German", "Swedish", "Spanish", "French"];
   const [langIndex, setLangIndex] = useState(0);
   const [selectedLanguage, setSelectedLanguage] = useState("Finnish");
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setStatus('submitting');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: 'a2be38e0-82b5-4f99-9935-7b0bfc938f59',
+          name: 'Kieli',
+          email: email,
+          subject: 'New Waitlist Signup for Kieli',
+          from_name: 'Kieli Waitlist',
+        }),
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        setStatus('success');
+      } else {
+        setStatus('idle');
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setStatus('idle');
+      alert('Network error. Please try again.');
+    }
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -80,25 +118,62 @@ export const LandingPage = () => {
              </div>
 
              {/* Waitlist CTA Area */}
-             <div className="flex flex-col sm:flex-row items-center gap-4 w-full pt-4">
-                <div className="relative w-full sm:w-auto flex-1 max-w-md">
-                   <input 
-                     type="email" 
-                     placeholder="Enter your email address..."
-                     className="w-full px-6 py-4 bg-card rounded-2xl glass-border shadow-soft focus:outline-none focus:ring-2 focus:ring-primary/20 text-brandText placeholder:text-brandText/40 font-semibold tracking-wide transition-all"
-                   />
-                </div>
-                <motion.button 
-                   whileHover={{ scale: 1.02 }}
-                   whileTap={{ scale: 0.98 }}
-                   className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-signature-gradient text-white font-bold tracking-wide shadow-soft flex items-center justify-center gap-3 group transition-all"
-                   style={{
-                      boxShadow: "0 10px 30px -10px rgba(57, 94, 159, 0.4)"
-                   }}
-                >
-                   <span>Join Waitlist</span>
-                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </motion.button>
+             <div className="w-full pt-4 min-h-[72px]">
+               <AnimatePresence mode="wait">
+                 {status === 'success' ? (
+                   <motion.div
+                     key="success"
+                     initial={{ opacity: 0, scale: 0.95 }}
+                     animate={{ opacity: 1, scale: 1 }}
+                     className="flex items-center gap-3 w-full max-w-md px-6 py-4 bg-primary/10 rounded-2xl border border-primary/20 text-primary font-bold"
+                   >
+                     <CheckCircle2 className="w-6 h-6" />
+                     <span>You're on the list! We'll be in touch.</span>
+                   </motion.div>
+                 ) : (
+                   <motion.form 
+                     key="form"
+                     initial={{ opacity: 0 }}
+                     animate={{ opacity: 1 }}
+                     exit={{ opacity: 0, scale: 0.95 }}
+                     onSubmit={handleSubmit}
+                     className="flex flex-col sm:flex-row items-center gap-4 w-full"
+                   >
+                      <div className="relative w-full sm:w-auto flex-1 max-w-md">
+                         <input 
+                           type="email" 
+                           required
+                           value={email}
+                           onChange={(e) => setEmail(e.target.value)}
+                           placeholder="Enter your email address..."
+                           className="w-full px-6 py-4 bg-card rounded-2xl glass-border shadow-soft focus:outline-none focus:ring-2 focus:ring-primary/20 text-brandText placeholder:text-brandText/40 font-semibold tracking-wide transition-all"
+                         />
+                      </div>
+                      <motion.button 
+                         type="submit"
+                         disabled={status === 'submitting'}
+                         whileHover={{ scale: 1.02 }}
+                         whileTap={{ scale: 0.98 }}
+                         className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-signature-gradient text-white font-bold tracking-wide shadow-soft flex items-center justify-center gap-3 group transition-all disabled:opacity-70"
+                         style={{
+                            boxShadow: "0 10px 30px -10px rgba(57, 94, 159, 0.4)"
+                         }}
+                      >
+                         {status === 'submitting' ? (
+                           <>
+                             <Loader2 className="w-5 h-5 animate-spin" />
+                             <span>Joining...</span>
+                           </>
+                         ) : (
+                           <>
+                             <span>Join Waitlist</span>
+                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                           </>
+                         )}
+                      </motion.button>
+                   </motion.form>
+                 )}
+               </AnimatePresence>
              </div>
              
              {/* Instructional CTA pointing to mockup */}

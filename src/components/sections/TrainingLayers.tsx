@@ -9,7 +9,9 @@ const layers = [
     icon: Bot,
     color: "from-blue-500/20 to-blue-600/5",
     iconColor: "text-blue-500",
-    borderColor: "border-blue-500/20"
+    borderColor: "border-blue-500/20",
+    image: "/Layer1.png",
+    fallback: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 2,
@@ -18,7 +20,9 @@ const layers = [
     icon: Users,
     color: "from-purple-500/20 to-purple-600/5",
     iconColor: "text-purple-500",
-    borderColor: "border-purple-500/20"
+    borderColor: "border-purple-500/20",
+    image: "/Layer2.png",
+    fallback: "https://images.unsplash.com/photo-1515161318750-781d6122e367?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 3,
@@ -27,7 +31,9 @@ const layers = [
     icon: PlayCircle,
     color: "from-orange-500/20 to-orange-600/5",
     iconColor: "text-orange-500",
-    borderColor: "border-orange-500/20"
+    borderColor: "border-orange-500/20",
+    image: "/Layer3.png",
+    fallback: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 4,
@@ -36,7 +42,9 @@ const layers = [
     icon: Network,
     color: "from-green-500/20 to-green-600/5",
     iconColor: "text-green-500",
-    borderColor: "border-green-500/20"
+    borderColor: "border-green-500/20",
+    image: "/Layer4.png",
+    fallback: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
   }
 ];
 
@@ -85,29 +93,32 @@ export const TrainingLayers = () => {
           {/* Vertical connecting line */}
           <div className="absolute left-[39px] md:left-1/2 top-10 bottom-10 w-[2px] bg-gradient-to-b from-brandText/5 via-primary/20 to-brandText/5 -translate-x-1/2 hidden md:block" />
 
-          <div className="space-y-6 md:space-y-8">
-            {layers.map((layer, index) => (
+          <div className="space-y-12 md:space-y-24">
+            {layers.map((layer, index) => {
+              const isEven = index % 2 === 0; // Layer 1, 3
+              
+              return (
               <motion.div
                 key={layer.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="relative flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 group"
+                className="relative flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-0 group"
               >
                 {/* Number indicator for mobile */}
                 <div className="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-card glass-border text-brandText font-bold shadow-soft z-10 shrink-0">
                   {layer.id}
                 </div>
 
-                {/* Left side (empty on even, content on odd) */}
-                <div className={`flex-1 w-full md:text-right ${index % 2 !== 0 ? 'md:order-1' : ''}`}>
+                {/* CONTENT SIDE */}
+                <div className={`flex-1 w-full ${isEven ? 'md:order-1 md:pr-12 md:text-right' : 'md:order-3 md:pl-12 md:text-left'}`}>
                   <div className={`bg-card rounded-3xl p-6 md:p-8 shadow-soft glass-border border transition-all duration-300 hover:shadow-lg hover:-translate-y-1 relative overflow-hidden ${layer.borderColor} group-hover:border-primary/30`}>
                     {/* Subtle gradient background */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${layer.color} opacity-50`} />
                     
                     <div className="relative z-10">
-                      <div className={`inline-flex items-center gap-3 mb-4 ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
+                      <div className={`inline-flex items-center gap-3 mb-4 ${isEven ? 'md:flex-row-reverse' : ''}`}>
                         <div className={`w-12 h-12 rounded-2xl bg-surface glass-border flex items-center justify-center shadow-sm ${layer.iconColor}`}>
                           <layer.icon className="w-6 h-6" />
                         </div>
@@ -117,23 +128,40 @@ export const TrainingLayers = () => {
                         </div>
                       </div>
                       
-                      <p className={`text-brandText/70 leading-relaxed ${index % 2 !== 0 ? 'md:text-right' : 'md:text-left'} text-left`}>
+                      <p className={`text-brandText/70 leading-relaxed text-left ${isEven ? 'md:text-right' : 'md:text-left'}`}>
                         {layer.description}
                       </p>
                     </div>
                   </div>
                 </div>
 
-                {/* Center dot for desktop */}
-                <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-card glass-border shadow-soft z-10 shrink-0 relative">
+                {/* CENTER DOT */}
+                <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-card glass-border shadow-soft z-10 shrink-0 relative md:order-2">
                   <div className="absolute inset-0 rounded-full border-2 border-primary/20 scale-150 animate-ping opacity-20" style={{ animationDelay: `${index * 0.5}s` }} />
                   <span className="text-lg font-bold text-brandText">{layer.id}</span>
                 </div>
 
-                {/* Right side (content on even, empty on odd) */}
-                <div className={`flex-1 hidden md:block ${index % 2 !== 0 ? 'md:order-0' : ''}`} />
+                {/* IMAGE SIDE */}
+                <div className={`flex-1 hidden md:flex items-center ${isEven ? 'md:order-3 md:justify-start md:pl-12' : 'md:order-1 md:justify-end md:pr-12'}`}>
+                  <motion.div 
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className={`relative w-full max-w-[320px] aspect-[4/3] rounded-3xl overflow-hidden shadow-soft glass-border border-2 ${layer.borderColor} group-hover:border-primary/40 group-hover:shadow-lg transition-colors duration-500`}
+                  >
+                    <div className={`absolute inset-0 bg-gradient-to-br ${layer.color} opacity-40 z-0`} />
+                    <img 
+                      src={layer.image}
+                      alt={layer.title}
+                      className="w-full h-full object-cover relative z-10 transition-transform duration-700 hover:scale-105"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = layer.fallback;
+                      }}
+                    />
+                  </motion.div>
+                </div>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
