@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, MessageCircle, Briefcase, Quote, Play } from 'lucide-react';
+import { useState } from 'react';
 
 interface ValuePropositionProps {
   selectedLanguage: string;
@@ -7,6 +8,8 @@ interface ValuePropositionProps {
 }
 
 export const ValueProposition = ({ selectedLanguage, setSelectedLanguage }: ValuePropositionProps) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
   return (
     <div className="w-full bg-secondary py-24 lg:py-32 relative overflow-hidden">
       
@@ -56,18 +59,46 @@ export const ValueProposition = ({ selectedLanguage, setSelectedLanguage }: Valu
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="w-full aspect-square max-w-md mx-auto lg:ml-auto lg:mr-0 bg-card rounded-[40px] glass-border shadow-soft flex flex-col items-center justify-center gap-6 relative overflow-hidden group cursor-pointer"
+              onClick={() => !isPlaying && setIsPlaying(true)}
+              className={`w-full aspect-square max-w-md mx-auto lg:ml-auto lg:mr-0 bg-card rounded-[40px] glass-border shadow-soft flex flex-col items-center justify-center relative overflow-hidden group ${!isPlaying ? 'cursor-pointer' : ''}`}
             >
-              <div className="absolute inset-0 bg-signature-gradient opacity-5 group-hover:opacity-10 transition-opacity duration-500" />
-              
-              <div className="w-24 h-24 rounded-full bg-surface glass-border shadow-soft flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform duration-500">
-                <Play className="w-8 h-8 text-primary ml-2 fill-primary/20" />
-              </div>
-              
-              <div className="text-center relative z-10 space-y-2">
-                <p className="text-sm font-bold tracking-widest text-primary uppercase">Watch Video</p>
-                <p className="text-brandText/50 font-medium">See how Kieli works</p>
-              </div>
+              <AnimatePresence mode="wait">
+                {!isPlaying ? (
+                  <motion.div
+                    key="placeholder"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="absolute inset-0 flex flex-col items-center justify-center gap-6"
+                  >
+                    <div className="absolute inset-0 bg-signature-gradient opacity-5 group-hover:opacity-10 transition-opacity duration-500" />
+                    
+                    <div className="w-24 h-24 rounded-full bg-surface glass-border shadow-soft flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform duration-500">
+                      <Play className="w-8 h-8 text-primary ml-2 fill-primary/20" />
+                    </div>
+                    
+                    <div className="text-center relative z-10 space-y-2">
+                      <p className="text-sm font-bold tracking-widest text-primary uppercase">Watch Video</p>
+                      <p className="text-brandText/50 font-medium">See how Kieli works</p>
+                    </div>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="video"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="absolute inset-0 w-full h-full bg-black"
+                  >
+                    <video
+                      src="/Mascot.mp4"
+                      autoPlay
+                      controls
+                      playsInline
+                      className="w-full h-full object-cover"
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           </div>
 
